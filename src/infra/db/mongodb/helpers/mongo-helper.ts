@@ -13,16 +13,25 @@ const options = {
 
 export const MongoHelper = {
     client: null as MongoClient,
+    uri: null as string,
 
-    async connect(url: string): Promise<void> {
-        this.client = await MongoClient.connect(url, options)
+    async connect(uri: string): Promise<void> {
+        this.uri = uri
+        this.client = await MongoClient.connect(uri, options)
     },
 
     async disconnect(): Promise<void> {
         await this.client.close()
+        this.client = null
     },
 
-    getCollection(name: string): Collection {
+    async getCollection(name: string): Promise<Collection> {
+
+        if (!this.client?.connected) {
+            await this.connect(this.uri)
+        }
+        this.client.on('open', _ => { this.client.connected = true })
+        this.client.on('topologyClosed', _ => { this.client.connected = false })
         return this.client.db().collection(name)
     },
 
