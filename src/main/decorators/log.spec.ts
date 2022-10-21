@@ -34,19 +34,17 @@ const makeFakeRequest = (params?): httpRequest => {
     }
 }
 
-const makeFakeAccount = (params?): AccountModel => {
-    return {
-        id: 'valid_id',
-        name: 'valid_name',
-        email: 'valid_email@mail.com',
-        password: 'valid_password',
-    }
-}
+const makeFakeAccount = (params?): AccountModel => ({
+    id: 'valid_id',
+    name: 'valid_name',
+    email: 'valid_email@mail.com',
+    password: 'valid_password',
+})
+
 const makeFakeServerError = (): httpResponse => {
     const fakeError = new Error()
     fakeError.stack = 'any_stack'
     return serverError(fakeError)
-
 }
 
 interface SutTypes {
