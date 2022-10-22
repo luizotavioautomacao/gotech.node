@@ -3,6 +3,15 @@ import { badRequest } from "../../../presentation/helpers/http-helper"
 import { httpRequest } from "../signup/signup-protocols.index"
 import { LoginController } from "./login"
 
+interface SutTypes {
+    sut: LoginController
+}
+
+const makeSut = (): SutTypes => {
+    const sut = new LoginController()
+    return { sut }
+}
+
 const makeFakeRequest = (params?): httpRequest => {
     let body = {}
     switch (params) {
@@ -18,13 +27,13 @@ const makeFakeRequest = (params?): httpRequest => {
 
 describe('Login controller', () => {
     test('Should return 400 if no email is provided', async () => {
-        const sut = new LoginController()
+        const { sut } = makeSut()
         const httpResponse = await sut.handle(makeFakeRequest('password'))
         expect(httpResponse).toEqual(badRequest(new MissingParamError('email')))
     })
 
     test('Should return 400 if no password is provided', async () => {
-        const sut = new LoginController()
+        const { sut } = makeSut()
         const httpResponse = await sut.handle(makeFakeRequest('email'))
         expect(httpResponse).toEqual(badRequest(new MissingParamError('password')))
     })
