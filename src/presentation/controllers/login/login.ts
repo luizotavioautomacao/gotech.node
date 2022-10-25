@@ -16,16 +16,17 @@ export class LoginController implements Controller {
         try {
             const { email, password } = htttRequest.body
             if (!email) {
-                return new Promise(resolve => resolve(badRequest(new MissingParamError('email'))))
+                return badRequest(new MissingParamError('email'))
             }
             if (!password) {
-                return new Promise(resolve => resolve(badRequest(new MissingParamError('password'))))
+                return badRequest(new MissingParamError('password'))
             }
-            const insValid = this.emailValidator.isValid(email)
-            if (!insValid) return new Promise(resolve => resolve(badRequest(new InvalidParamError('email'))))
+            const isValid = this.emailValidator.isValid(email)
+            if (!isValid) return badRequest(new InvalidParamError('email'))
             await this.authentication.auth(email, password)
         } catch (error) {
             return serverError(error)
         }
     }
 }
+//aula 28 - 12 minutos e 11
