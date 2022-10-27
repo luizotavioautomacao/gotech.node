@@ -1,8 +1,7 @@
-import { resolve } from "path"
-import { Authentication } from "../../../domain/usecases/authentication"
+import { } from "../../../domain/usecases/authentication"
 import { InvalidParamError, MissingParamError } from "../../../presentation/errors"
 import { badRequest, serverError, unauthorized } from "../../../presentation/helpers/http-helper"
-import { EmailValidator, httpRequest } from "../signup/signup-protocols.index"
+import { EmailValidator, httpRequest, Authentication } from "./login-protocols.index"
 import { LoginController } from "./login"
 
 const makeAuthentication = (): Authentication => {
@@ -99,5 +98,12 @@ describe('Login controller', () => {
         jest.spyOn(authenticationStub, 'auth').mockReturnValueOnce((new Promise(resolve => (resolve(null)))))
         const httpResponse = await sut.handle(makeFakeRequest())
         expect(httpResponse).toEqual(unauthorized())
+    })
+
+    test('Should return 500 if Authentication throws', async () => {
+        const { sut, authenticationStub } = makeSut()
+        jest.spyOn(authenticationStub, 'auth').mockReturnValueOnce(new Promise((resolve, reject) => { reject(new Error())}))
+        const httpResponse = await sut.handle(makeFakeRequest())
+        expect(httpResponse).toEqual(serverError(new Error()))
     })
 })
