@@ -1,5 +1,5 @@
 import { InvalidParamError, MissingParamError } from "../../../presentation/errors";
-import { badRequest, serverError, unauthorized } from "../../../presentation/helpers/http-helper";
+import { badRequest, serverError, unauthorized, ok } from "../../../presentation/helpers/http-helper";
 import { Controller, EmailValidator, Authentication, httpRequest, httpResponse } from "./login-protocols.index";
 
 export class LoginController implements Controller {
@@ -20,11 +20,11 @@ export class LoginController implements Controller {
             const { email, password } = htttRequest.body
             const isValid = this.emailValidator.isValid(email)
             if (!isValid) return badRequest(new InvalidParamError('email'))
-            const acessToken = await this.authentication.auth(email, password)
-            if (!acessToken) return unauthorized();
+            const accessToken = await this.authentication.auth(email, password)
+            if (!accessToken) return unauthorized();
+            return ok({ accessToken })
         } catch (error) {
             return serverError(error)
         }
     }
 }
-//aula 28 - 12 minutos e 11
