@@ -116,11 +116,11 @@ describe('SignUp Controller', () => {
     //     expect(httpResponse).toEqual(badRequest(new MissingParamError('passwordConfirmation')))
     // })
 
-    test('Should return 400 if passwordConfirmation failed', async () => {
-        const { sut } = makeSut()
-        const httpResponse = await sut.handle(makeFakeRequest('invalid_password'))
-        expect(httpResponse).toEqual(badRequest(new InvalidParamError('passwordConfirmation')))
-    })
+    // test('Should return 400 if passwordConfirmation failed', async () => {
+    //     const { sut } = makeSut()
+    //     const httpResponse = await sut.handle(makeFakeRequest('invalid_password'))
+    //     expect(httpResponse).toEqual(badRequest(new InvalidParamError('passwordConfirmation')))
+    // })
 
     test('Should return 400 if an invalid email is provided', async () => {
         const { sut, emailValidatorSub } = makeSut()
