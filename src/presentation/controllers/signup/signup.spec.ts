@@ -89,37 +89,37 @@ const makeFakeRequest = (params?): httpRequest => {
 
 describe('SignUp Controller', () => {
 
-    test('Should return 400 if no nome is provided', async () => {
-        const { sut } = makeSut()
-        const httpResponse = await sut.handle(makeFakeRequest('delete_name'))
-        expect(httpResponse).toEqual(badRequest(new MissingParamError('name')))
-        /*  expect(httpResponse.body).toBe(new Error('Missing param: name')) 
-                analisa se os ponteiros dos Objetos são iguais x Comparar valores dos objetos
-        */
-    })
+    // test('Should return 400 if no nome is provided', async () => {
+    //     const { sut } = makeSut()
+    //     const httpResponse = await sut.handle(makeFakeRequest('delete_name'))
+    //     expect(httpResponse).toEqual(badRequest(new MissingParamError('name')))
+    //     /*  expect(httpResponse.body).toBe(new Error('Missing param: name')) 
+    //             analisa se os ponteiros dos Objetos são iguais x Comparar valores dos objetos
+    //     */
+    // })
 
-    test('Should return 400 if no email is provided', async () => {
-        const { sut } = makeSut()
-        const httpResponse = await sut.handle(makeFakeRequest('delete_email'))
-        expect(httpResponse).toEqual(badRequest(new MissingParamError('email')))
-    })
+    // test('Should return 400 if no email is provided', async () => {
+    //     const { sut } = makeSut()
+    //     const httpResponse = await sut.handle(makeFakeRequest('delete_email'))
+    //     expect(httpResponse).toEqual(badRequest(new MissingParamError('email')))
+    // })
 
-    test('Should return 400 if no password is provided', async () => {
-        const { sut } = makeSut()
-        const httpResponse = await sut.handle(makeFakeRequest('delete_password'))
-        expect(httpResponse).toEqual(badRequest(new MissingParamError('password')))
-    })
+    // test('Should return 400 if no password is provided', async () => {
+    //     const { sut } = makeSut()
+    //     const httpResponse = await sut.handle(makeFakeRequest('delete_password'))
+    //     expect(httpResponse).toEqual(badRequest(new MissingParamError('password')))
+    // })
+
+    // test('Should return 400 if no passwordConfirmation is provided', async () => {
+    //     const { sut } = makeSut()
+    //     const httpResponse = await sut.handle(makeFakeRequest('delete_passwordConfirmation'))
+    //     expect(httpResponse).toEqual(badRequest(new MissingParamError('passwordConfirmation')))
+    // })
 
     test('Should return 400 if passwordConfirmation failed', async () => {
         const { sut } = makeSut()
         const httpResponse = await sut.handle(makeFakeRequest('invalid_password'))
         expect(httpResponse).toEqual(badRequest(new InvalidParamError('passwordConfirmation')))
-    })
-
-    test('Should return 400 if no passwordConfirmation is provided', async () => {
-        const { sut } = makeSut()
-        const httpResponse = await sut.handle(makeFakeRequest('delete_passwordConfirmation'))
-        expect(httpResponse).toEqual(badRequest(new MissingParamError('passwordConfirmation')))
     })
 
     test('Should return 400 if an invalid email is provided', async () => {
