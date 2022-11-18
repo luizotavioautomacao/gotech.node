@@ -1,5 +1,5 @@
 import ComparteFieldsValidation from '../../../presentation/helpers/validators/compare-fileds'
-import { Validation } from '../../../presentation/helpers/validators/validation'
+import { Validation } from '../../../presentation/protocols/validation'
 import RequiredFieldValidation from '../../../presentation/helpers/validators/required-filed-validation'
 import ValidationComposite from '../../../presentation/helpers/validators/validation-composite'
 import { EmailValidation } from '../../../presentation/helpers/validators/email-validation'

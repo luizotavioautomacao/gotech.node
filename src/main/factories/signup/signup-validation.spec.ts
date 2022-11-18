@@ -1,4 +1,4 @@
-import { Validation } from "../../../presentation/helpers/validators/validation"
+import { Validation } from "../../../presentation/protocols/validation"
 import RequiredFieldValidation from "../../../presentation/helpers/validators/required-filed-validation"
 import { makeSignUpValidation } from "./signup-validation"
 import ComparteFieldsValidation from "../../../presentation/helpers/validators/compare-fileds"
