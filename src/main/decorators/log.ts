@@ -1,5 +1,5 @@
-import { LogErrorRepository } from '@/data/protocols/log-error-repository';
-import { Controller, httpRequest, httpResponse } from '@/presentation/protocols'
+import { LogErrorRepository } from '../../data/protocols/log-error-repository';
+import { Controller, httpRequest, httpResponse } from '../../presentation/protocols'
 
 // decorator -> design pattern
 export class LogControllerDecorator implements Controller {
