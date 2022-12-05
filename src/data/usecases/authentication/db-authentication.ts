@@ -1,4 +1,4 @@
-import { LoadAccountByEmailRepository } from '@/data/protocols/load-account-repository';
+import { LoadAccountByEmailRepository } from '../../../data/protocols/load-account-repository';
 import { Authentication, AuthenticationModel } from '../../../domain/usecases/authentication'
 
 export class DbAuthentication implements Authentication {
