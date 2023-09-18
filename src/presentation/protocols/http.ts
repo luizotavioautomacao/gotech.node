@@ -5,4 +5,5 @@ export interface httpResponse {
 
 export interface httpRequest {
     body?: any
+    statusCode?: number
 }
