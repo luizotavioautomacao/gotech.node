@@ -1,6 +1,6 @@
 {
   "name": "yusuki",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -14,8 +14,13 @@
     "test:integration": "npm test -- --watch -c jest-integration-config.js",
     "test:integration:log": "jest --passWithNoTests --runInBand --watch -c jest-integration-config.js",
     "test:staged": "npm test -- --findRelatedTestes",
-    "test:ci": "npm test -- --coverage"
-  },
+    "test:ci": "npm test -- --coverage",
+    "docker": "node dist/main/server.js",
+    "build": "rimraf dist && tsc -p tsconfig-build.json",
+    "up": "npm run build && docker-compose up -d",
+    "down": "docker-compose down",
+    "logs": "docker-compose logs -f"
+    },
   "repository": {
     "type": "git",
     "url": "git+https://luizotavioautomacao@bitbucket.org/luizotavioautomacao/yusuki.git"
@@ -41,6 +46,7 @@
     "lint-staged": "^12.3.1",
     "sucrase": "^3.21.0",
     "supertest": "^6.2.3",
+    "rimraf": "^3.0.2",
     "ts-jest": "^27.1.5",
     "ts-node": "^10.4.0",
     "typescript": "^4.5.5"

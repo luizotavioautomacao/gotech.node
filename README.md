@@ -1,6 +1,21 @@
 # README #
 
-Instalação pelo terminal do Linux [resumo]  
+opção 1: Instalação/Configuração/Start via Docker  
+&nbsp; a- Dependências opção 2: instalar 1 e 2 (nvm, node e npm)  
+  
+&nbsp; b- Instalar Docker  
+&nbsp; &nbsp; Atualizar repositórios locais: `sudo apt-get update`    
+&nbsp; &nbsp; Instale algumas dependências necessárias: `sudo apt-get install \ apt-transport-https \ ca-certificates \ curl \ gnupg \ lsb-release`   
+&nbsp; &nbsp; Adicione a chave oficial GPG do Docker: `curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg`  
+&nbsp; &nbsp; Adicione o repositório do Docker Para Ubuntu 64-bit: `echo \  "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/inux/ubuntu \  $(lsb_release -cs) \  stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null`  
+&nbsp; &nbsp; Atualiazar repositórios: `sudo apt-get update`   
+&nbsp; &nbsp; Instalar docker : `sudo apt-get install docker-ce docker-ce-cli containerd.io`  
+&nbsp; &nbsp; Versão docker: `sudo docker --version`   
+&nbsp; &nbsp; Para executar docker comandos sem sudo: `sudo usermod -aG docker $USER`   
+
+b- Executar docker: `npm run up` 
+
+opção 2: Instalação pelo terminal do Linux [resumo]  
 
 1. Instalar o nvm (gerenciador do node)  
     &nbsp; `sudo apt install curl`  
@@ -45,6 +60,8 @@ Instalação pelo terminal do Linux [resumo]
 12. Abrir a foto clean.png para entender a estrutura inicial do projeto (Vale ressaltar que ainda não temos o projeto igual na foto, em breve teremos)
 
 ---
+
+obs.: 13. Parace ser necessário instalar o mongodb na máquina.
 
 O main vai ser ACOPLADO.
 
